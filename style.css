@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * 0.9);
+}
+
+.start-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.board {
+    width: 100vw;
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, auto);
+    /*position: fixed;*/
+}
+
+
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /*position: relative;*/
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child( 3n+1 ) {
+    border-left: none;
+}
+
+.cell:nth-child( 3n ) {
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+    border-bottom: none;
+}
+
+.board .x::before,
+.board .x::after {
+    content: '';
+    position: absolute;
+    height: var(--mark-size);
+    width: calc(var(--mark-size) * .15);
+    background-color: black;
+}
+
+.board .x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+.board .x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+.board .o::before, 
+.board.o .cell:not(.x):not(.o):hover::before {
+    content: '';
+    position: absolute;
+    height: var(--mark-size);
+    width: var(--mark-size);
+    background-color: black;
+    border-radius: 50%;
+}
+
+.board .o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    height: calc(var(--mark-size) * .7);
+    width: calc(var(--mark-size) * .7);
+    background-color: white;
+    border-radius: 50%;
+}
+
+.board .x:hover,
+.board .o:hover {
+    cursor: not-allowed;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    height: var(--mark-size);
+    width: calc(var(--mark-size) * .15);
+    opacity: 0.5;
+    background-color: grey;
+}
+
+.board.o .cell:not(.x):not(.o):hover::before {
+    opacity: 0.5;
+    background-color: grey;
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.message {
+    font-family: sans-serif;
+    font-size: 100px;
+}
+
+.button-set {
+    display: flex;
+}
+
+button {
+    font-size: 2em;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid white;
+
+}
+
+.input-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.player-2-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.show {
+    display: flex;
+}
+
+.player-name {
+    margin: 30px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.markit {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.player-form {
+    font-size: 30px;
+}
+
+.player-1-info, .player-2-info{
+    position: relative;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.player-1-info{
+    margin-top: 50px;
+    float: left;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.player-2-info{
+    float: right;
+    margin-top: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.hide {
+    display: none;
+}
